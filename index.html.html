@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>我的臺灣小吃童詩</title>
+<style>
+:root{--bg:#fffaf2;--card:#fff;--ink:#29313d;--muted:#6b7280;--line:#eadfce;--accent:#d96c45;--soft:#fff0df;--green:#4f7b63}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Noto Sans TC","Microsoft JhengHei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.65}
+main{max-width:760px;margin:auto;padding:18px 16px 60px}.top{position:sticky;top:0;background:rgba(255,250,242,.96);padding:10px 0;z-index:2}
+.progress{height:8px;background:#eadfce;border-radius:99px;overflow:hidden}.progress>div{height:100%;background:var(--accent);transition:.2s}.meta{display:flex;justify-content:space-between;font-size:14px;margin-bottom:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 4px 18px rgba(70,50,30,.05)}
+h1,h2{line-height:1.35;margin:.2em 0}.hint{color:var(--muted);font-size:15px}.foods,.three{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:18px 0}
+button,.btn{font:inherit;border:1px solid var(--line);background:#fff;border-radius:14px;padding:12px 14px;min-height:48px;color:var(--ink);cursor:pointer}
+button.selected{border:2px solid var(--accent);background:var(--soft)}.primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}.actions{display:flex;justify-content:space-between;gap:10px;margin-top:22px}.actions>*{flex:1}
+textarea,input{width:100%;font:inherit;font-size:16px;border:1px solid #d8cbbb;border-radius:13px;padding:12px;background:#fff;color:var(--ink)}textarea{resize:vertical;min-height:90px}
+label{display:block;font-weight:700;margin-top:18px}label small{display:block;font-weight:400;color:var(--muted);margin:3px 0 7px}
+.video{aspect-ratio:16/9;background:#111;border-radius:15px;overflow:hidden;margin:16px 0}.video iframe{width:100%;height:100%;border:0}
+.note{background:var(--soft);border-radius:14px;padding:13px 15px;margin:14px 0}.materials>div{padding:10px 12px;border-bottom:1px dashed var(--line)}.materials>div:last-child{border:0}
+.hidden{display:none!important}.example{background:#f6f5f1;border-radius:14px;padding:14px;margin-top:12px}.poem{white-space:pre-wrap;font-size:18px;line-height:1.9;padding:18px;background:#fff;border:1px solid var(--line);border-radius:16px}.center{text-align:center}
+.checks{display:grid;gap:8px;margin-top:16px}.checks div{background:#f8f7f3;padding:9px 12px;border-radius:10px}
+@media(min-width:600px){.foods{grid-template-columns:repeat(3,1fr)}.three{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:420px){main{padding:12px 10px 40px}.card{padding:17px}.foods button{padding:10px 6px}.actions{position:sticky;bottom:8px;background:rgba(255,250,242,.94);padding:8px 0}}
+</style>
+</head>
+<body>
+<main>
+<div class="top">
+ <div class="meta"><b id="stepText">第 1 步／8</b><span>一次完成一小步 🌱</span></div>
+ <div class="progress"><div id="bar" style="width:12.5%"></div></div>
+</div>
+
+<section id="p1" class="card page">
+<h1>🍽️ 我的臺灣小吃童詩</h1>
+<h2>先選一道你想寫的小吃</h2>
+<p class="hint">不用先想怎麼寫詩。選一個你有興趣的，我們先看它是怎麼做出來的。</p>
+<div class="foods">
+<button class="food" data-name="肉圓" data-id="8lxbIlnnDzU" data-start="0">🥟<br><b>肉圓</b></button>
+<button class="food" data-name="蚵仔煎" data-id="sUVDHz_62EQ" data-start="0">🦪<br><b>蚵仔煎</b></button>
+<button class="food" data-name="臭豆腐" data-id="W9Nuz0IdBQI" data-start="0">🟨<br><b>臭豆腐</b></button>
+<button class="food" data-name="蔥油餅" data-id="UKD2EpwEnP0" data-start="0">🫓<br><b>蔥油餅</b></button>
+<button class="food" data-name="地瓜球" data-id="Ll4-0R2h11c" data-start="68">🟡<br><b>地瓜球</b></button>
+<button class="food" data-name="珍珠奶茶" data-id="Ev1yV802ny0" data-start="0">🧋<br><b>珍珠奶茶</b></button>
+<button class="food" data-name="剉冰" data-id="27EEO4J5Nc4" data-start="99">🍧<br><b>剉冰</b></button>
+</div>
+<p id="pickMsg" class="hint"></p>
+<div class="actions"><span></span><button class="primary" id="watch">選好了 →</button></div>
+</section>
+
+<section id="p2" class="card page hidden">
+<h2>🎬 先看影片，不急著寫詩！</h2>
+<p>看看「<b class="foodName"></b>」是怎麼做出來的。</p>
+<div class="note"><b>看的時候，只要偷偷注意三件事：</b><br>👀 看到了什麼？<br>👂 聽到了什麼？<br>⭐ 哪個畫面最吸引你？</div>
+<div class="video"><iframe id="player" title="小吃製作影片" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<p id="startNote" class="hint center"></p>
+<p class="hint center">如果影片無法在框內播放，可以按下方「另開影片」。看完再回到這一頁。</p>
+<a id="externalVideo" class="btn primary" style="display:block;text-align:center;text-decoration:none" target="_blank" rel="noopener">▶ 另開影片觀看</a>
+<div class="actions"><button onclick="go(1)">← 換一道</button><button class="primary" onclick="go(3)">我看完了 →</button></div>
+</section>
+
+<section id="p3" class="card page hidden">
+<h2>🔎 剛才你發現了什麼？</h2>
+<p class="hint">現在還不用寫得像詩，把真的看到、聽到的事情留下來就好。</p>
+<label>👀 我看到……
+<small>它是什麼樣子？怎麼製作？有什麼動作？</small>
+<textarea id="see" placeholder="例如：一顆顆地瓜球在油鍋裡慢慢膨起來"></textarea></label>
+<label>👂 我聽到……
+<small>沒有特別的聲音也可以空著。</small>
+<input id="hear" placeholder="例如：滋滋滋、喀滋……"></label>
+<label>⭐ 我印象最深的畫面是……
+<small>哪一個畫面讓你最想再看一次？</small>
+<textarea id="best"></textarea></label>
+<p id="obsMsg" class="hint"></p>
+<div class="actions"><button onclick="go(2)">← 再看一次</button><button class="primary" id="obsNext">下一步 →</button></div>
+</section>
+
+<section id="p4" class="card page hidden">
+<h2>👃 👅 如果它就在你面前……</h2>
+<p class="hint">吃過，可以想想自己的經驗；沒吃過，也可以根據影片想像。</p>
+<label>👃 聞起來可能……
+<input id="smell" placeholder="香香的、甜甜的……"></label>
+<label>👅 吃起來可能……
+<input id="taste" placeholder="酥酥的、QQ的、冰冰的……"></label>
+<label>❤️ 吃完，我可能覺得……
+<input id="feel" placeholder="滿足、幸福、清涼……"></label>
+<div class="note">🌱 想不到可以空著，不需要每一格都填。</div>
+<div class="actions"><button onclick="go(3)">← 上一步</button><button class="primary" id="toIdeas">材料找好了 →</button></div>
+</section>
+
+<section id="p5" class="card page hidden">
+<h2>✨ 挑一個畫面，加一點想像</h2>
+<p>這是你剛才找到的材料：</p>
+<div id="summary" class="materials note"></div>
+<div class="example"><b>現在只試一個問題：</b><h2>👉 它像什麼？<br>或好像在做什麼？</h2>
+<p class="hint">例如：圓滾滾的地瓜球，好像一顆顆小皮球。</p></div>
+<label>💭 我的想像
+<textarea id="imagine" placeholder="它像……／它好像正在……"></textarea></label>
+<label>✏️ 試著寫成一句有畫面的詩
+<textarea id="pretty" placeholder="試一次就好，不用完美。"></textarea></label>
+<div class="note">想不到也沒關係。真實的觀察，一樣可以放進童詩。</div>
+<div class="actions"><button onclick="go(4)">← 上一步</button><button class="primary" id="compose">來寫童詩 →</button></div>
+</section>
+
+<section id="p6" class="card page hidden">
+<h2>📝 把材料排成你的童詩</h2>
+<p class="hint">前面找到的材料先幫你放進來了。你可以刪掉、改字、換行、調整順序，也可以加上新的句子。</p>
+<label>題目<input id="title"></label>
+<label>我的童詩<textarea id="poem" style="min-height:260px"></textarea></label>
+<div class="note">🌱 大約 5～10 行就可以。不一定要押韻，留下你最想讓別人看見的畫面。</div>
+<div class="actions"><button onclick="go(5)">← 上一步</button><button class="primary" id="toRhythm">加點節奏 →</button></div>
+</section>
+
+<section id="p7" class="card page hidden">
+<h2>🎵 讓童詩更有節奏</h2>
+<p><b>三個方法，選一個試試看就好！</b></p>
+<div class="three">
+<button class="rhythm" data-r="repeat">🔁<br><b>重複一下</b><br><span class="hint">重要的詞再說一次</span></button>
+<button class="rhythm" data-r="sound">🎵<br><b>加入聲音</b><br><span class="hint">把聲音放進詩裡</span></button>
+<button class="rhythm" data-r="split">✂️<br><b>句子分短</b><br><span class="hint">長句切成幾行</span></button>
+</div>
+<div id="rhythmExample" class="example hidden"></div>
+<label>✏️ 在自己的童詩上試著修改
+<small>下面保留了你上一頁寫好的整首童詩。選一種方法後，直接在作品裡修改就可以。</small>
+<textarea id="rhythmPoem" style="min-height:260px"></textarea></label>
+<div class="note">🌱 不需要整首都改。找到一個地方試試「重複、聲音或分短」就可以。</div>
+<p id="rhythmMsg" class="hint"></p>
+<div class="actions"><button onclick="go(6)">← 回去修改</button><button class="primary" id="finishRhythm">我試過了 →</button></div>
+</section>
+
+<section id="p8" class="card page hidden">
+<h2>👄 最後，把自己的童詩念一次</h2>
+<div class="note"><b>慢慢念，不用趕。</b><br>下面就是你剛才調整過的作品。看著自己的童詩念一次，聽聽讀起來有沒有一點節奏。</div>
+<h2 id="readTitle" class="center"></h2>
+<div id="readPoem" class="poem"></div>
+<p><b>念完後，你覺得呢？</b></p>
+<div class="three">
+<button class="feeling">😊<br>有一點！</button>
+<button class="feeling">😐<br>好像差不多</button>
+<button class="feeling">🤔<br>我還不確定</button>
+</div>
+<div id="final" class="hidden">
+<hr style="border:0;border-top:1px solid var(--line);margin:24px 0">
+<div class="center"><div style="font-size:38px">🎉</div><h2>我的童詩完成了！</h2><p class="hint">有觀察、有想像，也願意試一個節奏方法，就是一次完整的創作練習。</p></div>
+<h2 id="finalTitle" class="center"></h2><div id="finalPoem" class="poem"></div>
+<div class="checks"><div>✓ 我從影片或生活經驗找到材料</div><div>✓ 我加入了自己的觀察或想像</div><div>✓ 我試了一種節奏方法</div><div>✓ 我把作品念過一次</div></div>
+<div class="note">📱 最後可以截圖作品，上傳到班級 Padlet，看看同學寫出了哪些不同的小吃畫面。</div>
+</div>
+<div class="actions"><button onclick="go(7)">← 我想再修改</button></div>
+</section>
+</main>
+
+<script>
+let food='',videoId='',start=0,originalUrl='',rhythm='';
+const $=id=>document.getElementById(id);
+function go(n){
+ document.querySelectorAll('.page').forEach((p,i)=>p.classList.toggle('hidden',i!==n-1));
+ $('stepText').textContent='第 '+n+' 步／8'; $('bar').style.width=(n*12.5)+'%';
+ document.querySelectorAll('.foodName').forEach(x=>x.textContent=food);
+ if(n===2 && videoId){$('player').src='https://www.youtube-nocookie.com/embed/'+videoId+'?start='+start+'&playsinline=1&rel=0';}
+ else {$('player').src='';}
+ window.scrollTo({top:0,behavior:'smooth'}); save();
+}
+document.querySelectorAll('.food').forEach(b=>b.onclick=()=>{
+ food=b.dataset.name; videoId=b.dataset.id; start=Number(b.dataset.start||0);
+ document.querySelectorAll('.food').forEach(x=>x.classList.toggle('selected',x===b));
+ $('pickMsg').textContent='✓ 你選了「'+food+'」';
+});
+$('watch').onclick=()=>{
+ if(!food){$('pickMsg').textContent='請先選一道小吃喔！';return;}
+ const urls={
+ '肉圓':'https://youtu.be/8lxbIlnnDzU?si=yraN0Iije2r6lutc',
+ '蚵仔煎':'https://youtu.be/sUVDHz_62EQ?si=pNoH_D1bShVqXCHw',
+ '臭豆腐':'https://youtu.be/W9Nuz0IdBQI?si=CjZLBQ8chrF5AWGz',
+ '蔥油餅':'https://youtu.be/UKD2EpwEnP0?si=iy-FGaCDJ7Sx5fPS',
+ '地瓜球':'https://youtu.be/Ll4-0R2h11c?si=q4tVbyjJL3RXQfR9&t=68',
+ '珍珠奶茶':'https://youtu.be/Ev1yV802ny0?si=C4VTilD5oBSPeYHL',
+ '剉冰':'https://youtu.be/27EEO4J5Nc4?si=Nv6Mxgs6BYtcPrny&t=99'};
+ originalUrl=urls[food]; $('externalVideo').href=originalUrl;
+ $('startNote').textContent=start?'請從 '+Math.floor(start/60)+':'+String(start%60).padStart(2,'0')+' 開始觀看。':'';
+ go(2);
+};
+$('obsNext').onclick=()=>{if(!$('see').value.trim()&&!$('best').value.trim()){$('obsMsg').textContent='至少寫下「看到的事情」或「印象最深的畫面」其中一個。';return;}$('obsMsg').textContent='';go(4)};
+function ideas(){return [['👀 看到',$('see').value],['👂 聽到',$('hear').value],['⭐ 印象最深',$('best').value],['👃 聞起來',$('smell').value],['👅 吃起來',$('taste').value],['❤️ 感覺',$('feel').value]].filter(x=>x[1].trim())}
+$('toIdeas').onclick=()=>{$('summary').innerHTML='';ideas().forEach(x=>{let d=document.createElement('div');d.textContent=x[0]+'：'+x[1];$('summary').appendChild(d)});go(5)};
+$('compose').onclick=()=>{let lines=ideas().map(x=>x[1].trim());let pretty=$('pretty').value.trim();if(pretty)lines.unshift(pretty);if(!$('title').value)$('title').value=food;$('poem').value=lines.join('\\n');go(6)};
+$('toRhythm').onclick=()=>{if(!$('poem').value.trim()){alert('先留下一些童詩內容，再繼續喔！');return;}$('rhythmPoem').value=$('poem').value;go(7)};
+const examples={
+repeat:'<b>🔁 重複一下</b><p>把重要的詞再說一次。</p><b>香香的，<br>香香的，<br>肉圓出爐了！</b>',
+sound:'<b>🎵 加入聲音</b><p>把製作或吃東西的聲音放進來。</p><b>滋——滋——<br>肉圓跳進油鍋！</b>',
+split:'<b>✂️ 句子分短</b><p>一句太長，就找地方停一下。</p><b>雪白的米漿，<br>沿著鍋邊，<br>慢慢滑下來。</b>'};
+document.querySelectorAll('.rhythm').forEach(b=>b.onclick=()=>{rhythm=b.dataset.r;document.querySelectorAll('.rhythm').forEach(x=>x.classList.toggle('selected',x===b));$('rhythmExample').innerHTML=examples[rhythm];$('rhythmExample').classList.remove('hidden')});
+$('finishRhythm').onclick=()=>{if(!rhythm){$('rhythmMsg').textContent='先選一個節奏方法試試看。';return;}if(!$('rhythmPoem').value.trim()){$('rhythmMsg').textContent='作品不能是空白的喔！';return;}$('poem').value=$('rhythmPoem').value;$('readTitle').textContent='《'+($('title').value.trim()||food)+'》';$('readPoem').textContent=$('rhythmPoem').value.trim();$('rhythmMsg').textContent='';go(8)};
+document.querySelectorAll('.feeling').forEach(b=>b.onclick=()=>{document.querySelectorAll('.feeling').forEach(x=>x.classList.toggle('selected',x===b));$('finalTitle').textContent='《'+($('title').value.trim()||food)+'》';$('finalPoem').textContent=($('rhythmPoem').value.trim()||$('poem').value.trim());$('final').classList.remove('hidden');save()});
+function save(){try{let data={food,videoId,start,see:$('see').value,hear:$('hear').value,best:$('best').value,smell:$('smell').value,taste:$('taste').value,feel:$('feel').value,imagine:$('imagine').value,pretty:$('pretty').value,title:$('title').value,poem:$('poem').value,rhythmPoem:$('rhythmPoem').value};localStorage.setItem('taiwanFoodPoem',JSON.stringify(data))}catch(e){}}
+document.querySelectorAll('input,textarea').forEach(x=>x.addEventListener('input',save));
+try{const d=JSON.parse(localStorage.getItem('taiwanFoodPoem')||'null');if(d){['see','hear','best','smell','taste','feel','imagine','pretty','title','poem','rhythmPoem'].forEach(k=>{if(d[k])$(k).value=d[k]});}}catch(e){}
+</script>
+</body></html>
